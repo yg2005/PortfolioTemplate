@@ -2,10 +2,6 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 97b9b2fa11ce1dc0a3eb41582ad81aa59b7e0699
 Built using:
 
 - Front-end library: React
