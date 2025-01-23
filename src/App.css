@@ -620,3 +620,15 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   letter-spacing: 0.5px;
   margin-top: 20px;
 }
+
+.cert-image {
+  width: 100%; /* Adjust to the desired width */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 200px; /* Set a max height to match BMC */
+  object-fit: contain; /* Ensure the image fits within the bounds */
+}
+
+.cert-text {
+  text-align: center;
+  margin-top: 10px; /* Add space between image and text */
+}
