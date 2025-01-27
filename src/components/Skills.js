@@ -84,7 +84,7 @@ export const Skills = () => {
                                     <img className="cert-image" src={GenAI} alt="Generative AI" />
                                 </a>
                                 <a href="https://credentials.databricks.com/cdf1e819-31fb-45fd-afcb-f16bb20afc69#acc.vIU9tGWN" target="_blank" rel="noopener noreferrer">
-                                    <h5 className="cert-text">Generative AI</h5>
+                                    <h5 className="cert-text">Databricks Gen AI Fundamentals</h5>
                                 </a>
                             </div>
                         </Carousel>

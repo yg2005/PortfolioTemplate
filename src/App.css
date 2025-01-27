@@ -370,6 +370,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border-radius: 50px;
   background-color: rgb(255 255 255 / 10%);
   overflow: hidden;
+  align-items: center;
 }
 .project .nav.nav-pills .nav-item {
   width: 33.33333%;
@@ -421,7 +422,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   position: relative;
   border-radius: 30px;
   overflow: hidden;
-  margin-bottom: 24px;
+  margin: 0 auto; /* Ensures horizontal centering */
+  width: 80%; /* Adjust width for centering */
+  max-width: 600px; /* Cap the width for responsiveness */
+  height: auto; /* Maintain aspect ratio */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 .proj-imgbx::before {
   content: "";
@@ -468,6 +473,21 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width: 35%;
   right: 0;
   z-index: -4;
+}
+
+.project .row {
+  display: flex;
+  flex-direction: row; /* Arrange items horizontally */
+  justify-content: center; /* Center items horizontally */
+  flex-wrap: wrap; /* Allow wrapping to the next line if needed */
+  gap: 80px; /* Add consistent spacing between the project cards */
+  width: 100%;
+}
+
+.proj-imgbx {
+  width: 400px; /* Set a fixed width for each card */
+  max-width: 200%; /* Ensure responsiveness */
+  margin: 0 auto; /* Center the cards */
 }
 
 /************ Projects Css ************/
