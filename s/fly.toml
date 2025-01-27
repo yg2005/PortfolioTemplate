@@ -1,0 +1,18 @@
+app = "s-hidden-fog-7727"
+primary_region = "ewr"
+
+[http_service]
+  internal_port = 5001  # This should match the port your Flask app runs on
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[vm]]
+  memory = "1gb"
+  cpu_kind = "shared"
+  cpus = 1
+
+[build]
+  dockerfile = "Dockerfile"  # Let Fly.io know to use your Dockerfile
