@@ -652,3 +652,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   text-align: center;
   margin-top: 10px; /* Add space between image and text */
 }
+
+.proj-imgbx a {
+  text-decoration: none; /* Remove underline */
+}
+
+.proj-imgbx a:hover h4,
+.proj-imgbx a:hover span {
+  color: #fff; /* Keep text color white on hover */
+}
