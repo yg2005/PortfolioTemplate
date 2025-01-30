@@ -97,6 +97,10 @@ nav.navbar.scrolled {
 nav.navbar a.navbar-brand {
     width: 9%;
 }
+nav.navbar a.navbar-brand img {
+    width: 100%;
+    border-radius: 0;
+}
 nav.navbar .navbar-nav .nav-link.navbar-link {
   font-weight: 400;
   color: #fff !important;
