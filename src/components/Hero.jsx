@@ -82,8 +82,13 @@ export const Hero = () => {
 
                 {/* Left Column: Text & CTAs (7 cols) */}
                 <div className="lg:col-span-7 flex flex-col items-start text-left">
-                    <div className="hero-badge inline-flex items-center gap-2 px-5 py-2 rounded-full border border-accentPrimary/20 bg-accentPrimary/5 text-accentPrimary font-data text-sm font-medium mb-8 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-                        <span className="w-2 h-2 rounded-full bg-accentPrimary animate-pulse"></span>
+                    <div className="hero-badge inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-accentPrimary/20 bg-accentPrimary/5 text-accentPrimary font-data text-sm font-medium mb-8 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+                        <img
+                            src="/images/rutgers_logo.png"
+                            alt="Rutgers Logo"
+                            className="h-5 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] brightness-200"
+                        />
+                        <span className="w-1.5 h-1.5 rounded-full bg-accentPrimary animate-pulse"></span>
                         Rutgers Business School • Class of 2027
                     </div>
 
