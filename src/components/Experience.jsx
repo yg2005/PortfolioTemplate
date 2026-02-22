@@ -52,26 +52,34 @@ export const Experience = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.from('.exp-item', {
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'top 80%',
-                },
-                y: 30,
-                opacity: 0,
-                duration: 0.6,
-                stagger: 0.1,
-                ease: 'power2.out'
-            });
+            gsap.fromTo('.exp-item',
+                { y: 50, opacity: 0 },
+                {
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: 'top 85%',
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    stagger: 0.15,
+                    ease: 'power3.out',
+                    clearProps: 'transform,opacity'
+                }
+            );
         }, containerRef);
         return () => ctx.revert();
     }, []);
 
     return (
-        <section id="experience" className="py-24 px-6 md:px-24 bg-background relative z-10" ref={containerRef}>
-            <div className="max-w-4xl mx-auto">
+        <section id="experience" className="py-24 px-6 md:px-24 bg-transparent relative z-10 overflow-hidden" ref={containerRef}>
+            {/* Ambient Background Visuals */}
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-accentPrimary/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+            <div className="absolute bottom-0 left-[-10%] w-[600px] h-[600px] bg-accentSecondary/5 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+
+            <div className="max-w-4xl mx-auto relative z-10">
                 <div className="flex items-center gap-4 mb-16">
-                    <div className="p-3 bg-textMain rounded-2xl text-white">
+                    <div className="p-3 bg-textMain rounded-2xl text-white shadow-lg shadow-textMain/20">
                         <Briefcase size={28} />
                     </div>
                     <h2 className="text-3xl md:text-5xl font-heading font-bold text-textMain tracking-tight">
@@ -85,7 +93,7 @@ export const Experience = () => {
                         return (
                             <div
                                 key={exp.id}
-                                className={`exp-item transition-all duration-300 rounded-3xl border ${isOpen ? 'border-accentPrimary/20 bg-background/50 shadow-lg' : 'border-textSecondary/10 hover:border-textSecondary/30 hover:bg-background/30'
+                                className={`exp-item transition-all duration-300 rounded-3xl border ${isOpen ? 'border-accentPrimary/20 bg-white shadow-xl' : 'border-textSecondary/10 bg-white/80 hover:border-textSecondary/30 hover:bg-white shadow-sm'
                                     }`}
                             >
                                 <button

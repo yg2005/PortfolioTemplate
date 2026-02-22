@@ -60,7 +60,7 @@ export const Skills = () => {
     }, []);
 
     return (
-        <section id="skills" className="py-24 px-6 md:px-24 bg-background relative z-10" ref={containerRef}>
+        <section id="skills" className="py-24 px-6 md:px-24 bg-transparent relative z-10" ref={containerRef}>
             <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16">
 
                 <div className="lg:col-span-2">
@@ -76,7 +76,7 @@ export const Skills = () => {
                                     {cat.skills.map((skill, i) => (
                                         <div
                                             key={i}
-                                            className="skill-chip px-4 py-2 rounded-xl bg-textSecondary/5 border border-textSecondary/10 text-textSecondary font-body text-sm font-medium hover:bg-textSecondary/10 transition-colors cursor-default"
+                                            className="skill-chip px-4 py-2 rounded-xl bg-white shadow-sm border border-textSecondary/10 text-textSecondary font-body text-sm font-medium hover:shadow-md transition-[box-shadow,color,background-color] duration-300 cursor-default"
                                         >
                                             {skill}
                                         </div>
@@ -94,9 +94,9 @@ export const Skills = () => {
 
                     <ul className="certs-list space-y-6">
                         {certifications.map((cert, i) => (
-                            <li key={i} className="cert-item flex items-start gap-4 group">
-                                <div className="mt-1.5 w-2 h-2 rounded-full bg-accentPrimary/40 transition-colors group-hover:bg-accentPrimary" />
-                                <span className="font-body text-textSecondary group-hover:text-textMain transition-colors">{cert}</span>
+                            <li key={i} className="cert-item flex items-center gap-4 group p-4 bg-white shadow-sm border border-textSecondary/10 rounded-2xl hover:shadow-md transition-[box-shadow,color,background-color] duration-300">
+                                <div className="w-2.5 h-2.5 rounded-full bg-accentPrimary/40 transition-colors group-hover:bg-accentPrimary flex-shrink-0" />
+                                <span className="font-body font-medium text-textSecondary group-hover:text-textMain transition-colors">{cert}</span>
                             </li>
                         ))}
                     </ul>

@@ -7,16 +7,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#FFFFFF",
-        textMain: "#020617",
-        textSecondary: "#64748B",
-        accentPrimary: "#3B82F6",
-        accentSecondary: "#6366F1"
+        background: "var(--color-bg, #FFFFFF)",
+        textMain: "var(--color-text-main, #020617)",
+        textSecondary: "var(--color-text-secondary, #64748B)",
+        accentPrimary: "var(--color-accent-primary, #3B82F6)",
+        accentSecondary: "var(--color-accent-secondary, #6366F1)"
       },
       fontFamily: {
         heading: ["Outfit", "sans-serif"],
         body: ["Outfit", "sans-serif"],
-        data: ["Inter", "monospace"],
+        data: ["Space Grotesk", "Inter", "monospace"],
       }
     },
   },

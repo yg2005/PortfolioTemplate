@@ -7,11 +7,11 @@ export const Footer = () => {
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
 
                 <div>
-                    <div className="font-heading font-bold text-3xl tracking-tight mb-2">
-                        YG.
+                    <div className="font-heading font-bold text-2xl tracking-tight mb-2">
+                        Yash Gudimalla
                     </div>
                     <p className="font-body text-white/60 max-w-sm">
-                        Bridging High Finance & Deep Tech. Building scalable data pipelines and financial models.
+                        Business Intelligence Meets Product Strategy. Building scalable data pipelines and financial models.
                     </p>
                 </div>
 

@@ -59,16 +59,34 @@ const ShufflerCard = () => {
 
 const TypewriterCard = () => {
     const [text, setText] = useState('');
-    const fullText = "Scaled platform to 350+ users in 1.5 months. Achieved 75% satisfaction. Led cross-functional teams and guided product roadmap.";
+    const [fading, setFading] = useState(false);
+    const fullText = "Scaled platform to 400+ users in 1.5 months. Achieved 75% satisfaction. Led cross-functional teams and guided product roadmap.";
 
     useEffect(() => {
         let i = 0;
-        const interval = setInterval(() => {
-            setText(fullText.slice(0, i));
-            i++;
-            if (i > fullText.length) i = 0; // Loop
-        }, 50);
-        return () => clearInterval(interval);
+        let timeout;
+
+        const typeNext = () => {
+            if (i <= fullText.length) {
+                setText(fullText.slice(0, i));
+                i++;
+                timeout = setTimeout(typeNext, 45);
+            } else {
+                // Pause at end, then fade and restart
+                timeout = setTimeout(() => {
+                    setFading(true);
+                    timeout = setTimeout(() => {
+                        i = 0;
+                        setText('');
+                        setFading(false);
+                        timeout = setTimeout(typeNext, 400);
+                    }, 600);
+                }, 2500);
+            }
+        };
+
+        timeout = setTimeout(typeNext, 800);
+        return () => clearTimeout(timeout);
     }, []);
 
     return (
@@ -93,7 +111,7 @@ const TypewriterCard = () => {
                     <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
                     <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
                 </div>
-                <div className="text-white/90">
+                <div className={`text-white/90 transition-opacity duration-500 ${fading ? 'opacity-0' : 'opacity-100'}`}>
                     {text}
                     <span className="inline-block w-2.5 h-4 ml-1 bg-accentPrimary animate-pulse align-middle" />
                 </div>
@@ -110,18 +128,15 @@ const SchedulerCard = () => {
         const ctx = gsap.context(() => {
             const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
 
-            // Move cursor to center cell
             tl.to(cursorRef.current, {
                 x: 120,
                 y: 40,
                 duration: 1,
                 ease: "power2.inOut"
             })
-                // Click simulation
                 .to(cursorRef.current, { scale: 0.8, duration: 0.1 })
                 .to(cellRef.current, { backgroundColor: 'rgba(99, 102, 241, 0.1)', borderColor: 'rgba(99, 102, 241, 0.4)', duration: 0.1 }, "<")
                 .to(cursorRef.current, { scale: 1, duration: 0.1 })
-                // Move to "Train" button
                 .to(cursorRef.current, {
                     x: 200,
                     y: 110,
@@ -133,7 +148,6 @@ const SchedulerCard = () => {
                 .to('.train-btn', { scale: 0.95, backgroundColor: '#3B82F6', duration: 0.1 }, "<")
                 .to(cursorRef.current, { scale: 1, duration: 0.1 })
                 .to('.train-btn', { scale: 1, backgroundColor: '#020617', duration: 0.1 }, "<")
-                // Reset
                 .to(cursorRef.current, { opacity: 0, duration: 0.3, delay: 0.5 })
                 .set(cellRef.current, { backgroundColor: 'transparent', borderColor: 'rgba(0,0,0,0.05)' })
                 .set(cursorRef.current, { x: 0, y: 0, opacity: 1 });
@@ -186,29 +200,35 @@ export const Metrics = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.from('.metric-card', {
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'top 75%',
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: 'power3.out'
-            });
+            gsap.fromTo('.metric-card',
+                { y: 50, opacity: 0 },
+                {
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: 'top 75%',
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    stagger: 0.15,
+                    ease: 'power3.out'
+                }
+            );
         }, containerRef);
         return () => ctx.revert();
     }, []);
 
     return (
-        <section id="metrics" className="py-24 px-6 md:px-24 bg-background relative z-10" ref={containerRef}>
-            <div className="max-w-6xl mx-auto">
-                <div className="mb-16">
+        <section id="metrics" className="py-24 px-6 md:px-24 bg-transparent relative z-10 overflow-hidden" ref={containerRef}>
+            {/* Ambient Background Visuals */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-accentSecondary/5 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+
+            <div className="max-w-6xl mx-auto relative z-10">
+                <div className="mb-16 text-center">
                     <h2 className="text-3xl md:text-5xl font-heading font-bold text-textMain mb-4">
                         Core Competencies
                     </h2>
-                    <p className="text-textSecondary text-lg max-w-2xl">
+                    <p className="text-textSecondary text-lg max-w-2xl mx-auto font-body">
                         A precise skill set built at the intersection of quantitative analysis and software engineering.
                     </p>
                 </div>
